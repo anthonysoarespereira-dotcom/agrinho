@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agrinho 2026 | Agro Forte & Sustentável</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================================================
+           RESET & TOPO DA ARQUITETURA CSS
+           ========================================================================== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        :root {
+            /* Paleta Monocromática Verde ao Amarelo (Foco em Contraste e Acessibilidade) */
+            --color-primary-deep: #0b251a;      /* Verde ultra escuro */
+            --color-primary-medium: #143e2c;    /* Verde corporativo */
+            --color-primary-light: #1b4d36;     /* Verde base */
+            --color-accent-gold: #f4bc1c;       /* Amarelo ouro institucional */
+            --color-accent-soft: #fcf6bd;       /* Amarelo palha sutil */
+            
+            /* Cores de Suporte */
+            --color-bg-base: #f7f9f6;           /* Off-white com subtom esverdeado */
+            --color-text-main: #1c2421;         /* Grafite de alta leitura */
+            --color-text-muted: #4a5751;        /* Cinza esverdeado para textos secundários */
+            --color-white: #ffffff;
+
+            /* Engenharia de Layout (Spacing e Blur) */
+            --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            --border-radius-lg: 16px;
+            --border-radius-md: 8px;
+            --shadow-subtle: 0 4px 20px rgba(11, 37, 26, 0.04);
+            --shadow-elevated: 0 20px 40px rgba(11, 37, 26, 0.08);
+            --glass-blur: blur(12px);
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            background-color: var(--color-bg-base);
+            color: var(--color-text-main);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ==========================================================================
+           COMPONENTES CORES/GRADIENTES (Avançado)
+           ========================================================================== */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--color-white) 60%, var(--color-accent-gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* ==========================================================================
+           HEADER & NAVEGAÇÃO
+           ========================================================================== */
+        .app-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(11, 37, 26, 0.85);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 1.25rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: var(--transition-smooth);
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 800;
+            font-size: 1.4rem;
+            letter-spacing: -0.5px;
+            color: var(--color-white);
+            text-decoration: none;
+        }
+
+        .brand span {
+            color: var(--color-accent-gold);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.75);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transition-smooth);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-accent-gold);
+            transition: var(--transition-smooth);
+        }
+
+        .nav-link:hover {
+            color: var(--color-white);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* ==========================================================================
+           HERO SECTION (Layout Rígido e Imponente)
+           ========================================================================== */
+        .hero {
+            position: relative;
+            min-height: 85vh;
+            background: radial-gradient(circle at 80% 20%, var(--color-primary-medium) 0%, var(--color-primary-deep) 100%);
+            display: flex;
+            align-items: center;
+            padding: 8rem 4rem 4rem 4rem;
+            overflow: hidden;
+        }
+
+        /* Elemento Decorativo Geométrico de Fundo */
+        .hero::before {
+            content: '';
+            position: absolute;
+            right: -10%;
+            bottom: -20%;
+            width: 60vw;
+            height: 60vw;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(244, 188, 28, 0.08) 0%, rgba(11, 37, 26, 0) 70%);
+            pointer-events: none;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            align-items: center;
+            gap: 4rem;
+        }
+
+        .hero-content {
+            max-width: 700px;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.06);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            color: var(--color-accent-gold);
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            line-height: 1.1;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.75);
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+        }
+
+        /* ==========================================================================
+           CONTEÚDO E ESCOPO (Grid Complexo)
+           ========================================================================== */
+        .scope-section {
+            max-width: 1300px;
+            margin: -5rem auto 6rem auto;
+            position: relative;
+            z-index: 10;
+            padding: 0 2rem;
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
+        }
+
+        /* Card Master / Conceito Integrado */
+        .card-main-scope {
+            grid-column: span 12;
+            background: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            padding: 4rem;
+            box-shadow: var(--shadow-elevated);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            border-left: 8px solid var(--color-accent-gold);
+        }
+
+        .scope-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--color-primary-deep);
+            line-height: 1.2;
+        }
+
+        .scope-header p {
+            color: var(--color-text-muted);
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        /* Subcards Dinâmicos */
+        .card-child {
+            grid-column: span 6;
+            background: var(--color-white);
+            border-radius: var(--border-radius-lg);
+            padding: 3rem;
+            box-shadow: var(--shadow-subtle);
+            border: 1px solid rgba(11, 37, 26, 0.04);
+            transition: var(--transition-smooth);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .card-child:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-elevated);
+        }
+
+        .card-child.agro-fort {
+            border-top: 5px solid var(--color-primary-medium);
+        }
+
+        .card-child.future-sust {
+            border-top: 5px solid var(--color-accent-gold);
+        }
+
+        .card-icon-wrapper {
+            width: 50px;
+            height: 50px;
+            border-radius: var(--border-radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .agro-fort .card-icon-wrapper {
+            background: rgba(20, 62, 44, 0.08);
+            color: var(--color-primary-medium);
+        }
+
+        .future-sust .card-icon-wrapper {
+            background: rgba(244, 188, 28, 0.12);
+            color: #d49e00;
+        }
+
+        .card-child h3 {
+            font-size: 1.6rem;
+            color: var(--color-primary-deep);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .card-child p {
+            color: var(--color-text-muted);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        /* ==========================================================================
+           FOOTER INSTITUCIONAL
+           ========================================================================== */
+        .app-footer {
+            background: var(--color-primary-deep);
+            color: rgba(255, 255, 255, 0.6);
+            padding: 3rem 2rem;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.9rem;
+        }
+
+        /* ==========================================================================
+           OTIMIZAÇÕES DE RESPONSIVIDADE E BREAKPOINTS
+           ========================================================================== */
+        @media (max-width: 1024px) {
+            .hero h1 { font-size: 3rem; }
+            .card-main-scope { grid-template-columns: 1fr; gap: 2rem; padding: 3rem; }
+            .hero-container { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .app-header { padding: 1rem 2rem; }
+            .nav-menu { display: none; } /* Em produção, adicionaria gatilho mobile script */
+            .hero { padding: 8rem 2rem 6rem 2rem; }
+            .grid-layout { gap: 1.5rem; }
+            .card-child { grid-column: span 12; padding: 2rem; }
+            .scope-section { margin-top: -2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <a href="#" class="brand">AGRINHO <span>2026</span></a>
+        <nav aria-label="Navegação Principal">
+            <ul class="nav-menu">
+                <li><a href="#diretrizes" class="nav-link">Diretrizes</a></li>
+                <li><a href="#agro-forte" class="nav-link">Agro Forte</a></li>
+                <li><a href="#sustentabilidade" class="nav-link">Sustentabilidade</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-tag">Inovação & Educação</span>
+                <h1 class="gradient-text">Agrinho 2026</h1>
+                <p>O nexo entre o conhecimento de vanguarda e o campo. Projetamos a infraestrutura intelectual para transformar o ecossistema agrícola através da liderança consciente.</p>
+            </div>
+        </div>
+    </section>
+
+    <main class="scope-section" id="diretrizes">
+        <div class="grid-layout">
+            
+            <div class="card-main-scope">
+                <div class="scope-header">
+                    <h2>O Escopo Estrutural</h2>
+                    <p>O equilíbrio indissociável para a segurança e soberania do campo no futuro.</p>
+                </div>
+                <div>
+                    <p style="color: var(--color-text-muted); line-height: 1.7;">
+                        O amanhã da produção agrícola exige solidez técnica associada ao respeito rigoroso à biosfera. Através do Agrinho 2026, refinamos esses dois pilares como forças simbióticas, preparando as próximas gerações para gerir complexidades tecnológicas e climáticas.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card-child agro-fort" id="agro-forte">
+                <div>
+                    <div class="card-icon-wrapper">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"></path><path d="M12 6v6l4 2"></path></svg>
+                    </div>
+                    <h3>Agro Forte</h3>
+                    <p>Foco na resiliência econômica e na segurança produtiva. O vigor do agronegócio manifesta-se através da integração de tecnologias de precisão, otimização de cadeias logísticas Complexas e governança baseada em dados robustos.</p>
+                </div>
+            </div>
+
+            <div class="card-child future-sust" id="sustentabilidade">
+                <div>
+                    <div class="card-icon-wrapper">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 3.5 0 8.5C17 15 14.98 18.8 11 20z"></path><path d="M11 20c-1.5-4.5 1-7.5 4.5-9.5"></path></svg>
+                    </div>
+                    <h3>Futuro Sustentável</h3>
+                    <p>Alinhamento estrito com os princípios ESG e transição verde. Desenvolvemos metodologias de manejo regenerativo do solo, conservação dinâmica de recursos hídricos e mitigação sistemática de impactos ambientais.</p>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="app-footer">
+        <p>&copy; 2026 Agrinho Institution. Desenvolvimento e Tecnologia aplicados ao Campo Sustentável.</p>
+    </footer>
+
+</body>
+</html>
